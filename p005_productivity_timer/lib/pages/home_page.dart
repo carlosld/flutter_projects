@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:productivity_timer/helpers/timer.dart';
 
 import 'package:productivity_timer/widgets/productivitybutton.dart';
 
 class HomePage extends StatelessWidget {
   final double defaultPadding = 5.0;
+  final CountDownTimer timer = CountDownTimer();
 
   @override
   Widget build(BuildContext context) {
+    timer.startWork();
     return Scaffold(
         appBar: AppBar(
           title: Text('My Work Timer'),
