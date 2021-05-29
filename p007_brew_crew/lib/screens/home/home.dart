@@ -1,10 +1,8 @@
-import 'dart:ffi';
-
 import 'package:brew_crew/models/app_user.dart';
 import 'package:brew_crew/models/brew.dart';
 import 'package:brew_crew/screens/home/brew_list.dart';
 import 'package:brew_crew/services/auth_service.dart';
-import 'package:brew_crew/services/dabase.dart';
+import 'package:brew_crew/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,9 +15,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppUser? _user = Provider.of<AppUser?>(context);
 
-    return StreamProvider<List<Brew>?>.value(
+    return StreamProvider<List<Brew>>.value(
       value: DatabaseService(uid: _user?.uid ?? '').brews,
-      initialData: null,
+      initialData: [],
       child: Scaffold(
         backgroundColor: Colors.brown[100],
         appBar: AppBar(
